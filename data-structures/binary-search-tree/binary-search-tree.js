@@ -45,4 +45,57 @@ BinarySearchTree.prototype = {
   //---------------------------------------
   // Private members
   //---------------------------------------
+
+  /**
+     * Appends some data to the appropriate point in the tree. If there are no
+     * nodes in the tree, the data becomes the root. If there are other nodes
+     * in the tree, then the tree must be traversed to find the correct spot
+     * for insertion. 
+     * @param {variant} value The data to add to the list.
+     * @return {Void}
+     * @method add
+     */
+  add: function(value) {
+    //create a new item object, place data in
+    var node = {
+        value: value,
+        left: null, 
+        right: null
+    };
+
+    // used to traverse the structure
+    var current;
+
+    // special case: if tree is empty
+    if(this._root === null) {
+        //this is the right place
+        this._root = node;
+    } else {
+        current = this._root;
+        while(true) {
+            // if the specified value is less than the current's, go left
+            if(value < current.value) {
+                //if there is no left, then new node belongs here
+                if(current.left === null) {
+                    current.left = node;
+                    break;
+                } else {
+                    current = current.left;
+                }
+              // if specified value is greater than current's, go right
+            } else if(value > current.value) {
+                // if there is no right, then new node belongs here
+                if(current.right === null) {
+                    current.right = node;
+                    break;
+                } else {
+                    current = current.right;
+                }
+            //if the new value is equal to the current one, just ignore
+            } else{
+                break;
+            }
+        }
+    }
+  }
 };

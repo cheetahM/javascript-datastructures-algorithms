@@ -169,5 +169,29 @@ BinarySearchTree.prototype = {
       });
 
       return length;
+  },
+
+  /**
+   * Converts tree into an array.
+   * @returns {Array} An array containing all of the data in the tree.
+   * @method toArray
+   */
+  toArray: function() {
+      var result = [];
+
+      this.traverse(function(node) {
+        result.push(node.value);
+      });
+
+      return result;
+  },
+
+  /**
+   * Converts the list into a string representation.
+   * @returns {String} A string representation of the list.
+   * @method toString
+   */
+  toString: function() {
+      return this.toArray(). toString();
   }
 };

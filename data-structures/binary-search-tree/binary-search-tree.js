@@ -154,5 +154,20 @@ BinarySearchTree.prototype = {
 
       // start with the root
       inOrder(this._root);
+  },
+
+  /**
+   * Returns the number of items in the tree using traversal
+   * @return (int) The number of items in the tree.
+   * @method size
+   */
+  size: function() {
+      var length = 0;
+
+      this.traverse(function(node) {
+          length++;
+      });
+
+      return length;
   }
 };

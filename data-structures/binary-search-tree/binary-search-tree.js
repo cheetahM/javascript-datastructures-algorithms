@@ -97,5 +97,32 @@ BinarySearchTree.prototype = {
             }
         }
     }
+  },
+
+  /**
+   * Determines ifthe given value is present in the tree.
+   * @param {variant} value The value to find.
+   * @return {Boolean} True if the value is found, false if not.
+   * @method contains
+   */
+  contains: function(value) {
+    var found = false,
+        current = this._root;
+
+    // check if there is a node to search
+    while(!found && current) {
+        //if value is less than current's , go left
+        if(value < current.value) {
+            current = current.left;
+        // if value is greater than current's, go right
+        } else if(value > current.value) {
+            current = current.right;
+        // values are equal, found it
+        } else {
+            found = true;
+        }
+    }
+    //only proceed if the node was found
+    return found;
   }
 };

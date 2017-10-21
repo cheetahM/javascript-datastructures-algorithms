@@ -124,5 +124,35 @@ BinarySearchTree.prototype = {
     }
     //only proceed if the node was found
     return found;
+  },
+
+  /**
+   * Traverses the tree and runs the given method on each node it comes
+   * across while doing an in-order traversal.
+   * @param {Function} process The function to run on each node
+   * @return {void}
+   * @method traverse
+   */
+  traverse: function(process) {
+      //helper function
+      function inOrder(node) {
+          if(node) {
+              // traverse the left subtree
+              if(node.left !== null) {
+                  inOrder(node.left);
+              }
+
+              //call the process method on this node
+              process.call(this, node);
+
+              // traverse the right subtree
+              if(node.right !== null) {
+                  inOrder(node.right);
+              }
+          }
+      }
+
+      // start with the root
+      inOrder(this._root);
   }
 };

@@ -36,7 +36,7 @@ class FindInversionCount {
         let left = arr.slice(0,mid);
         let right = arr.slice(mid);
 
-        // step 2: Conquer with solving subproblems with recrusive calls
+        // step 2: Conquer with solving subproblems with recursive calls
         let leftCount = this.countInversion(left);
         let rightCount = this.countInversion(right);
         // step 3: merge the solution for subproblems to solve original problem

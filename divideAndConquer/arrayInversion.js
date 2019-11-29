@@ -39,7 +39,7 @@ class FindInversionCount {
         let rightCount = this.countInversion(right);
 
         let splitCount = this.merge(arr.slice(0,mid), arr.slice(mid), arr);
-
+        return leftCount + rightCount + splitCount;
     }
 }
 

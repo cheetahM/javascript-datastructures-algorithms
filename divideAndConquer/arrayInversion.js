@@ -31,13 +31,15 @@ class FindInversionCount {
             return 0;
         
         // count inversion for arr.length > 2
+        // step 1: divide the problem into subproblems
         let mid = Math.floor(arr.length/2);
         let left = arr.slice(0,mid);
         let right = arr.slice(mid);
 
+        // step 2: Conquer with solving subproblems with recrusive calls
         let leftCount = this.countInversion(left);
         let rightCount = this.countInversion(right);
-
+        // step 3: merge the solution for subproblems to solve original problem
         let splitCount = this.merge(arr.slice(0,mid), arr.slice(mid), arr);
         return leftCount + rightCount + splitCount;
     }
@@ -47,4 +49,4 @@ class FindInversionCount {
 //instantiate an object
 const solution = new FindInversionCount();
 
-console.log(solution.countInversion([1,3,5,2,4,6]));
+console.log(solution.countInversion([1,8,3,5,2,4,6]));
